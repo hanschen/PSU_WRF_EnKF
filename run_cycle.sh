@@ -1,20 +1,20 @@
 #!/bin/bash
-#####header for jet######
-#PBS -A hfip-psu
-#PBS -N run_cycle
-#PBS -l walltime=8:00:00
-#PBS -q batch
-#PBS -l partition=ujet:tjet
-#PBS -l procs=1464
-#PBS -j oe
-#PBS -o ./log
-#PBS -d .
+######header for jet######
+##PBS -A hfip-psu
+##PBS -N run_cycle
+##PBS -l walltime=8:00:00
+##PBS -q batch
+##PBS -l partition=ujet:tjet
+##PBS -l procs=1464
+##PBS -j oe
+##PBS -o ./log
+##PBS -d .
 
-#####header for stampede######
-##SBATCH -J run_cycle
-##SBATCH -n 96
-##SBATCH -p development
-##SBATCH -t 2:00:00
+####header for stampede######
+#SBATCH -J run_cycle
+#SBATCH -n 96
+#SBATCH -p development
+#SBATCH -t 2:00:00
 
 source ~/.bashrc
 
