@@ -19,8 +19,8 @@
 source ~/.bashrc
 
 #load configuration files, functions, parameters
-cd $WORK/DA
-export CONFIG_FILE=$WORK/DA/config/katrina
+cd $WORK/playground/PSU_WRF_EnKF
+export CONFIG_FILE=$WORK/playground/PSU_WRF_EnKF/config/katrina
 . $CONFIG_FILE
 . util.sh
 
