@@ -146,8 +146,8 @@
  HOSTPPN=16
  HOSTTYPE=stampede
  JOB_SUBMIT_MODE=1
- wrf_ntasks=$HOSTPPN
- real_ntasks=$HOSTPPN
+ wrf_ntasks=32
+ real_ntasks=32
  var3d_ntasks=$HOSTPPN
  var4d_ntasks=$HOSTPPN
  var4d_ppn=4
