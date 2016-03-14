@@ -1,5 +1,5 @@
 #!/bin/bash
-. $WORK/DA/util.sh
+. /work/02523/hwc5213/playground/PSU_WRF_EnKF/util.sh
 rundir=$1/run
 
 if [ ! -d $rundir ]; then echo "$rundir doesn't exist"; exit; fi
