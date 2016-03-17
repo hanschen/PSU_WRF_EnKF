@@ -24,7 +24,7 @@ MINUTES_PER_SLOT=15
 FORECAST_MINUTES=60
 
 # Directories
-WORK_DIR=$WORK/playground/enkf/$EXP_NAME
+WORK_DIR=$WORK/playground/output/$EXP_NAME
 SCRIPT_DIR=$WORK/playground/PSU_WRF_EnKF
 CODE_DIR=$WORK/playground/WRF
 DATA_DIR=$WORK/wrf-enkf/data

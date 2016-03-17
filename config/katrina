@@ -15,7 +15,7 @@
  DATE_CYCLE_END=200508251700
 
 #directories
- WORK_DIR=$WORK/playground/enkf/$EXP_NAME
+ WORK_DIR=$WORK/playground/output/$EXP_NAME
  SCRIPT_DIR=$WORK/playground/PSU_WRF_EnKF
  CODE_DIR=$WORK/playground/WRF
  DATA_DIR=$WORK/wrf-enkf/data
