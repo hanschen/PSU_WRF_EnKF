@@ -20,7 +20,7 @@ source ~/.bashrc
 
 #load configuration files, functions, parameters
 cd $WORK/playground/PSU_WRF_EnKF
-export CONFIG_FILE=$WORK/playground/PSU_WRF_EnKF/config/katrina
+export CONFIG_FILE=$WORK/playground/PSU_WRF_EnKF/config/carbon.sh
 . $CONFIG_FILE
 . util.sh
 
