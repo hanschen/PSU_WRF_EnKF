@@ -27,13 +27,13 @@ FORECAST_MINUTES=60
 WORK_DIR=$WORK/playground/output/$EXP_NAME
 SCRIPT_DIR=$WORK/playground/PSU_WRF_EnKF
 CODE_DIR=$WORK/playground/WRF
-DATA_DIR=$WORK/wrf-enkf/data
+DATA_DIR=$WORK/playground/data
 WRF_DIR=$CODE_DIR/WRFV3.6.1_20tracers
 WRF_BC_DIR=$SCRIPT_DIR/WRF_BC_v2.1_alltime/src
 WRFDA_DIR=$CODE_DIR/WRFDAV3.6.1
 WPS_DIR=$CODE_DIR/WPSV3.6.1
 ENKF_DIR=$SCRIPT_DIR/EnKF/src
-FG_DIR=$DATA_DIR/era-interim
+FG_DIR=$DATA_DIR/era-interim/2010
 GEOG_DIR=$WORK/playground/data/geog_v3.6.1
 BE_DIR=$WORK_DIR/be
 
