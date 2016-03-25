@@ -124,7 +124,7 @@ fi
 
 cat << EOF
 smooth_option=0,
-num_metgrid_levels=27,
+num_metgrid_levels=38,
 p_top_requested=$P_TOP,
 num_metgrid_soil_levels=4,
 nproc_x=0,
