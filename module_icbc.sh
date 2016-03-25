@@ -105,14 +105,16 @@ while [[ $fgdate -le `advance_time $start_date $run_minutes` ]]; do
   dd=`echo $fgdate |cut -c7-8`
   hh=`echo $fgdate |cut -c9-10`
 #  file="$FG_DIR/gfs.$ccyymm$dd$hh/`date -u -d $ccyymm$dd' '$hh':00' +%y%j%H`000000" #GFS
-  file="$FG_DIR/fnl_${ccyymm}${dd}_${hh}_00"                                #FNL
-  if [ -e $file ]; then 
-    gribfile="$gribfile $file"
-  fi
+  file="$FG_DIR/ei.*.${ccyymm}${dd}${hh}"  # ERA-Interim
+  for f in $file; do
+    if [ -e "$f" ]; then
+      gribfile="$gribfile $file"
+    fi
+  done
   fgdate=`advance_time $fgdate $LBC_INTERVAL`
 done
 $WPS_DIR/link_grib.csh $gribfile
-ln -sf $WPS_DIR/ungrib/Variable_Tables/Vtable.GFS Vtable
+ln -sf $WPS_DIR/ungrib/Variable_Tables/Vtable.ERA-interim.pl Vtable
 ln -fs $WPS_DIR/ungrib/src/ungrib.exe .
 ./ungrib.exe >& ungrib.log
 watch_log ungrib.log Successful 2 $rundir
