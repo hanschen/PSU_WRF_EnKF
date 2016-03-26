@@ -15,6 +15,9 @@
 #SBATCH -n 96
 #SBATCH -p development
 #SBATCH -t 2:00:00
+#SBATCH --mail-user=hans.chen@psu.edu
+#SBATCH --mail-type=begin
+#SBATCH --mail-type=end
 
 source ~/.bashrc
 
