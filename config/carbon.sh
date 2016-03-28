@@ -36,6 +36,7 @@ ENKF_DIR=$SCRIPT_DIR/EnKF/src
 FG_DIR=$DATA_DIR/era-interim/2015
 GEOG_DIR=$WORK/playground/data/geog_v3.6.1
 BE_DIR=$WORK_DIR/be
+EXTRAS_DIR=$DATA_DIR/extras
 
 # Domain setup
 TWO_WAY_NESTING=false

@@ -37,7 +37,7 @@ cat << EOF
  parent_grid_ratio = 1,`for i in $(seq 2 $MAX_DOM); do printf ${GRID_RATIO[$i-1]}, ; done`
  i_parent_start = 1,`for i in $(seq 2 $MAX_DOM); do printf ${i_parent_start[$i-1]}, ; done`
  j_parent_start = 1,`for i in $(seq 2 $MAX_DOM); do printf ${j_parent_start[$i-1]}, ; done`
- geog_data_res  = `for i in $(seq 1 $MAX_DOM); do printf '30s', ; done`
+ geog_data_res  = 'usgs_lakes+10m'
  e_we       = `for i in $(seq 1 $MAX_DOM); do printf ${E_WE[$i-1]}, ; done`
  e_sn       = `for i in $(seq 1 $MAX_DOM); do printf ${E_SN[$i-1]}, ; done`
  dx = ${DX[0]},
@@ -49,7 +49,7 @@ cat << EOF
  truelat2  = $TRUELAT2,
  stand_lon = $STAND_LON,
  geog_data_path = '$GEOG_DIR',
- opt_geogrid_tbl_path = '$WPS_DIR/geogrid'
+ opt_geogrid_tbl_path = '$EXTRAS_DIR/geogrid'
 /
 
 &ungrib
@@ -62,6 +62,7 @@ cat << EOF
  io_form_metgrid = 2, 
  opt_output_from_metgrid_path = './',
  opt_metgrid_tbl_path         = '$WPS_DIR/metgrid',
+ constants_name = 'TAVGSFC'                           
 /
 
 &mod_levs

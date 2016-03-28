@@ -119,7 +119,13 @@ ln -fs $WPS_DIR/ungrib/src/ungrib.exe .
 ./ungrib.exe >& ungrib.log
 watch_log ungrib.log Successful 2 $rundir
 
-#3. metgrid.exe --------------------------------------------------------------------
+#3. avg_tsfc.exe -------------------------------------------------------------------
+echo "  Running avg_tsfc.exe..."
+ln -fs $WPS_DIR/util/src/avg_tsfc.exe .
+./avg_tsfc.exe >& avg_tsfc.log
+watch_log avg_tsfc.log Successful 2 $rundir
+
+#4. metgrid.exe --------------------------------------------------------------------
 echo "  Running metgrid.exe..."
 ln -fs $WPS_DIR/metgrid/METGRID.TBL.ARW METGRID.TBL
 ln -fs $WPS_DIR/metgrid/src/metgrid.exe .
@@ -127,7 +133,7 @@ $SCRIPT_DIR/job_submit.sh $real_ntasks 0 $HOSTPPN ./metgrid.exe >& metgrid.log
 watch_log metgrid.log Successful 2 $rundir
 mv met_em* $WORK_DIR/rc/$DATE/.
 
-#4. real.exe ----------------------------------------------------------------------
+#5. real.exe ----------------------------------------------------------------------
 echo "  Running real.exe..."
 $SCRIPT_DIR/namelist_wrf.sh real > namelist.input
 ln -fs ../../../rc/$DATE/met_em* .

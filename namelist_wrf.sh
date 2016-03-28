@@ -184,6 +184,7 @@ cam_abs_dim2 = 45
  surface_input_source                = 1,
 
  num_soil_layers                     = 4,
+ num_land_cat                        = 28,
 EOF
 echo "/"
 
