@@ -79,6 +79,18 @@ if [[ $SST_UPDATE == 1 ]]; then
   echo io_form_auxinput4=2,
 fi
 
+if [[ $INCLUDE_CHEM = true ]]; then
+  cat << EOF
+auxinput11_interval  = $(for i in $domlist; do printf 1, ; done)
+auxinput11_end_h     = 0, $(for i in $(seq 2 $MAX_DOM); do printf 9999, ; done)
+io_form_auxinput5    = 2,
+auxinput5_interval_m = $(for i in $domlist; do printf 60, ; done)
+auxinput5_inname     = 'wrfchemi_d<domain>_<date>.nc',
+frames_per_auxinput5 = $(for i in $domlist; do printf 1, ; done)
+write_input          = .false.
+EOF
+fi
+
 echo "/"
 
 #=============DOMAIN PART=============
@@ -133,6 +145,18 @@ p_top_requested=$P_TOP,
 num_metgrid_soil_levels=4,
 nproc_x=0,
 EOF
+
+if [[ $INCLUDE_CHEM = true ]]; then
+    cat << EOF
+interp_type                         = 2,
+lagrange_order                      = 2,
+zap_close_levels                    = 500,
+lowest_lev_from_sfc                 = .false.,
+force_sfc_in_vinterp                = 1,
+p_top_requested                     = 5000,
+eta_levels                          = 1.,0.99829197,0.99605834,0.99329919,0.99001443,0.98620421,0.98186833,0.97700697,0.97162002,0.96570754,0.95926946,0.95230585,0.94481671,0.93680203,0.92826176,0.91919589,0.90960455,0.89948761,0.88884509,0.87767702,0.86598349,0.85376430,0.84101957,0.82774931,0.81395352,0.79963213,0.78478521,0.76941270,0.75351465,0.73709106,0.72014189,0.70266724,0.68466693,0.66614115,0.64708972,0.62751281,0.60741037,0.58678234,0.56562877,0.54394960,0.52174491,0.49901462,0.47575885,0.45197743,0.42767048,0.40283805,0.37748009,0.35159636,0.32518721,0.29825258,0.27079231,0.24280649,0.21429515,0.18525827,0.15569580,0.12560773,0.09499413,0.06385493,0.032190201,0.00,
+EOF
+fi
 
 #echo "eta_levels=1.000,0.99258,0.98275,0.96996,0.95372,0.93357,0.90913,0.87957,0.84531,0.80683,0.76467,0.7194,0.67163,0.62198,0.57108,0.51956,0.46803,0.4203,0.37613,0.33532,0.29764,0.2629,0.23092,0.20152,0.17452,0.14978,0.12714,0.10646,0.08761,0.07045,0.05466,0.03981,0.0258,0.01258,0.000,"
 echo "/"
@@ -223,6 +247,27 @@ specified           = $(for i in $domlist; do if [ $i == 1 ]; then printf .true.
 nested              = $(for i in $domlist; do if [ $i == 1 ]; then printf .false.,; else printf .true.,; fi; done)
 EOF
 echo "/"
+
+#=============CHEMISTRY=============
+if [[ $INCLUDE_CHEM = true ]]; then
+  echo "&chem"
+  cat << EOF
+kemit               = 1,
+chem_opt            = $(for i in $domlist; do printf 14, ; done)
+emi_inname          = "wrfchemi_d<domain>_<date>.nc",
+input_chem_inname   = "wrfchemi_d<domain>_<date>.nc",
+chemdt              = $(for i in $domlist; do printf 0.033, ; done)
+emiss_inpt_opt      = $(for i in $domlist; do printf 1, ; done)
+io_style_emissions  = 2,
+chem_conv_tr        = $(for i in $domlist; do printf 0, ; done)
+emiss_opt           = $(for i in $domlist; do printf 9, ; done)
+bio_emiss_opt       = 0,    
+gaschem_onoff       = 0,    
+biomass_burn_opt    = 0,    
+have_bcs_chem       = $(for i in $domlist; do if [ $i == 1 ]; then printf .true.,; else printf .false.,; fi; done)
+EOF
+  echo "/"
+fi
 
 #=============OTHERS=============
 cat << EOF
