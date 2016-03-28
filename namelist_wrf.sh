@@ -207,9 +207,17 @@ cam_abs_dim1 = 4
 cam_abs_dim2 = 45
 
  isfflx                              = 1,
- ifsnow                              = 1,
+ ifsnow                              = 0,
  icloud                              = 1,
  surface_input_source                = 1,
+
+ seaice_threshold                    = 271
+ swint_opt                           = 1,
+ maxiens                             = 1,
+ maxens                              = 3,
+ maxens2                             = 3,
+ maxens3                             = 16,
+ ensdim                              = 144,
 
  num_soil_layers                     = 4,
  num_land_cat                        = 28,
