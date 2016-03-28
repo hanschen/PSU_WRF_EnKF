@@ -244,6 +244,16 @@ spec_bdy_width      = 5,
 spec_zone           = 1,
 relax_zone          = 4,
 specified           = $(for i in $domlist; do if [ $i == 1 ]; then printf .true.,; else printf .false.,; fi; done)
+periodic_x          = $(for i in $domlist; do printf .false., ; done)
+symmetric_xs        = $(for i in $domlist; do printf .false., ; done)
+symmetric_xe        = $(for i in $domlist; do printf .false., ; done)
+open_xs             = $(for i in $domlist; do printf .false., ; done)
+open_xe             = $(for i in $domlist; do printf .false., ; done)
+periodic_y          = $(for i in $domlist; do printf .false., ; done)
+symmetric_ys        = $(for i in $domlist; do printf .false., ; done)
+symmetric_ye        = $(for i in $domlist; do printf .false., ; done)
+open_ys             = $(for i in $domlist; do printf .false., ; done)
+open_ye             = $(for i in $domlist; do printf .false., ; done)
 nested              = $(for i in $domlist; do if [ $i == 1 ]; then printf .false.,; else printf .true.,; fi; done)
 EOF
 echo "/"
