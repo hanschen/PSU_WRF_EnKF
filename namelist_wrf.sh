@@ -229,17 +229,26 @@ echo "/"
 echo "&dynamics"
 cat << EOF
  w_damping                           = 0,
- diff_opt                            = 2,
- km_opt                              = 4,
- diff_6th_opt                        = 0,      0,      0,
+ diff_opt                            = 0,
+ km_opt                              = 1,
+ diff_6th_opt                        = 2,      2,      2,
  diff_6th_factor                     = 0.12,   0.12,   0.12,
  base_temp                           = 290.
- damp_opt                            = 3,
- zdamp                               = 7000.,  7000.,  5000.,
- dampcoef                            = 0.1,    0.1,    0.2
+ damp_opt                            = 0,
+ zdamp                               = 5000.,  5000.,  5000.,
+ dampcoef                            = 0.2,    0.2,    0.2
  khdif                               = 0,      0,      0,
  kvdif                               = 0,      0,      0,
+ smdiv                               = 0.1,    0.1,  
+ emdiv                               = 0.01,   0.01, 
+ epssm                               = 0.1,    0.1,  
  non_hydrostatic                     = .true., .true., .true.,
+ time_step_sound                     = 4,      4,     
+ h_mom_adv_order                     = 5,      5,     
+ v_mom_adv_order                     = 3,      3,     
+ h_sca_adv_order                     = 5,      5,     
+ v_sca_adv_order                     = 3,      3,     
+ use_baseparam_fr_nml                = .true.
  moist_adv_opt                       = 1,      1,      1,
  scalar_adv_opt                      = 1,      1,      1,
 EOF
