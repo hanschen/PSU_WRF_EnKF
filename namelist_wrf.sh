@@ -52,6 +52,10 @@ input_from_file    = $(for i in $domlist; do printf .true., ; done)
 interval_seconds   = $((LBC_INTERVAL*60)),
 history_interval   = $(for i in $domlist; do printf $(min $wrfout_interval ${WRFOUT_INTERVAL[$i-1]}), ; done)
 frames_per_outfile = $(for i in $domlist; do printf 1, ; done)
+io_form_history    = 2,
+io_form_restart    = 2,
+io_form_input      = 2,
+io_form_boundary   = 2,
 debug_level        = 0,
 EOF
 
