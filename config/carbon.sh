@@ -6,6 +6,7 @@ RUN_DETERMINISTIC=false
 MULTI_PHYS_ENS=false
 FOLLOW_STORM=false
 CLEAN=false
+INCLUDE_CHEM=false
 
 # Experiment design
 EXP_NAME=carbon
