@@ -84,6 +84,32 @@ EOF
 done
 wait
 
+# Link wrfchemi files
+if [[ $INCLUDE_CHEM = true ]]; then
+  echo "  Linking wrfchemi files..."
+
+  for id in $(seq -f '%03.0f' 1 $NUM_ENS); do
+    cd $id
+    fgdate=$DATE
+    while [[ $fgdate -le `advance_time $DATE $run_minutes` ]]; do
+      ccyy=`echo $fgdate |cut -c1-4`
+      mm=`echo $fgdate |cut -c5-6`
+      dd=`echo $fgdate |cut -c7-8`
+      hh=`echo $fgdate |cut -c9-10`
+      file="$WRFCHEMI_DIR/wrfchemi_d01_${ccyy}-${mm}-${dd}_${hh}*.nc"
+
+      for f in $file; do
+        if [ -e "$f" ]; then
+            ln -sf "$f" .
+        fi
+      done
+      fgdate=`advance_time $fgdate $WRFCHEMI_INTERVAL`
+    done
+    cd ..
+  done
+fi
+
+
 for NE in `seq 1 $NUM_ENS`; do
   id=`expr $NE + 1000 |cut -c2-`
   watch_log $id/update_wrf_bc.log successfully 1 $rundir
