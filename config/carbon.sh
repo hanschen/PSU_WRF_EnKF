@@ -23,6 +23,7 @@ OBS_WIN_MIN=-180
 OBS_WIN_MAX=180
 MINUTES_PER_SLOT=60
 FORECAST_MINUTES=360
+WRFCHEMI_INTERVAL=60
 
 # Directories
 WORK_DIR=$WORK/playground/output_enkf/$EXP_NAME
@@ -38,6 +39,8 @@ FG_DIR=$DATA_DIR/era-interim/2015
 GEOG_DIR=$WORK/playground/data/geog_v3.6.1
 BE_DIR=$WORK_DIR/be
 EXTRAS_DIR=$DATA_DIR/extras
+WRFCHEM_BC_DIR=$SCRIPT_DIR/wrfchem_bc
+WRFCHEMI_DIR=$DATA_DIR/wrfchemi
 
 # Domain setup
 TWO_WAY_NESTING=false
