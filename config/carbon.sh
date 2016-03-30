@@ -161,3 +161,7 @@ var4d_ntasks=$HOSTPPN
 var4d_ppn=4
 enkf_ntasks=$((NMCPU*$NICPU*$NJCPU))
 enkf_ppn=4
+
+# WRF-CHEM options
+NTRACER=20
+TRACER_BC=(2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2) # 1 = CT, 2 = 300, 3 = 0
