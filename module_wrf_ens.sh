@@ -153,6 +153,36 @@ for r in 1 3; do
       cp $WORK_DIR/rc/$DATE/ij_parent_start .
       cp $WORK_DIR/rc/$DATE/domain_moves .
     fi
+
+    # Insert boundary conditions in tracers in wrfbdy
+    if [[ $INCLUDE_CHEM = true ]]; then
+      ln -sf $WRFCHEM_BC_DIR/wrfchembc .
+      bdyname="wrfchembc_namelist.input"
+
+      for bdy in $(seq 0 $((NTRACER-1))); do
+        rm -f ${bdyname}.${bdy}
+        cat > ${bdyname}.${bdy} << EOF
+&control
+
+dir_wrf = './'
+fnb_wrf  = 'wrfbdy_d01'
+fni_wrf  = 'wrfinput_d01'
+
+chem_bc_opt = ${TRACER_BC[bdy]}
+dir_global = './'
+fn_global  = ''
+
+nspec = 1
+
+specname = 'tracer_$((bdy+1))'
+
+/
+EOF
+
+        ./wrfchembc < ${bdyname}.${bdy} > wrfchem_bc.log.$bdy
+      done
+    fi
+
     $SCRIPT_DIR/namelist_wrf.sh wrf > namelist.input
     $SCRIPT_DIR/job_submit.sh $wrf_ntasks $((tid*$wrf_ntasks)) $HOSTPPN ./wrf.exe >& wrf.log &
     tid=$((tid+1))
