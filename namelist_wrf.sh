@@ -87,7 +87,6 @@ io_form_auxinput5    = 2,
 auxinput5_interval_m = $(for i in $domlist; do printf 60, ; done)
 auxinput5_inname     = 'wrfchemi_d<domain>_<date>.nc',
 frames_per_auxinput5 = $(for i in $domlist; do printf 1, ; done)
-write_input          = .false.
 EOF
 fi
 
